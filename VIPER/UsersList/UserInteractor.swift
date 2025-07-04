@@ -26,15 +26,15 @@ class UserInteractor: UserInteractorProtocol {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else {return}
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, _ , error in
             guard let data = data, error == nil else {
-                self?.presenter?.interactorDidFetchData(with: .failure(fetchDataError.failed) as Result<[User], Error>)
+                self?.presenter?.interactorDidFetchData(with: .failure(fetchDataError.failed))
                 return
             }
             
             do {
                 let entities = try JSONDecoder().decode([User].self, from: data)
-                self?.presenter?.interactorDidFetchData(with: .success(entities as [User]))
+                self?.presenter?.interactorDidFetchData(with: .success(entities))
             } catch {
-                self?.presenter?.interactorDidFetchData(with: .failure(fetchDataError.failed) as Result<[User], Error>)
+                self?.presenter?.interactorDidFetchData(with: .failure(fetchDataError.failed))
             }
         }
         task.resume()

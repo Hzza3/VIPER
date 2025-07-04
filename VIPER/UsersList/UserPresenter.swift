@@ -13,7 +13,7 @@ protocol UserPresenterProtocol {
     var view: UserViewProtocol? {get set}
     
     func viewRequestedData()
-    func interactorDidFetchData<T: Decodable>(with result: Result<[T], Error>)
+    func interactorDidFetchData(with result: Result<[User], Error>)
 }
 
 
@@ -27,14 +27,12 @@ class UserPresenter: UserPresenterProtocol {
         interactor?.getData()
     }
     
-    func interactorDidFetchData<T>(with result: Result<[T], any Error>) {
+    func interactorDidFetchData(with result: Result<[User], any Error>) {
         switch result {
-        case .success(let users as [User]):
+        case .success(let users):
             view?.update(with: users)
         case .failure:
             view?.update(with: "something went wrong")
-        case .success(_):
-            print("wrong user type")
         }
     }
 }
