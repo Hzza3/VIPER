@@ -14,6 +14,7 @@ protocol UserPresenterProtocol {
     
     func viewRequestedData()
     func interactorDidFetchData(with result: Result<[User], Error>)
+    func didSelectUser(user: User)
 }
 
 
@@ -25,6 +26,10 @@ class UserPresenter: UserPresenterProtocol {
     
     func viewRequestedData() {
         interactor?.getData()
+    }
+    
+    func didSelectUser(user: User) {
+        router?.navigateToUserDetails(user: user)
     }
     
     func interactorDidFetchData(with result: Result<[User], any Error>) {

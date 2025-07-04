@@ -31,7 +31,11 @@ class MainTabBarRouter: MainTabBarRouterProtocol {
         let usersListVC = usersListRouter.entry
         
         if let usersList = usersListVC {
-            view?.viewControllers = [usersList]
+            // Create a navigation controller for the users list view controller
+            let navigationController = UINavigationController(rootViewController: usersList)
+            // Set navigation bar title
+            usersList.title = "Users"
+            view?.viewControllers = [navigationController]
         }
        
     

@@ -38,6 +38,38 @@
             </objects>
             <point key="canvasLocation" x="-296" y="34"/>
         </scene>
+        <!--User DetailsVC-->
+        <scene sceneID="h5q-d1-EWL">
+            <objects>
+                <viewController storyboardIdentifier="UserDetailsVC" id="rJY-CH-F1M" customClass="UserDetailsVC" customModule="VIPER" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XO6-pE-NBC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZX-iT-jr0" userLabel="label">
+                                <rect key="frame" x="20" y="426" width="353" height="0.0"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="II4-2e-xRY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bZX-iT-jr0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="II4-2e-xRY" secondAttribute="leading" constant="20" id="2bi-wZ-Oqi"/>
+                            <constraint firstItem="II4-2e-xRY" firstAttribute="trailing" secondItem="bZX-iT-jr0" secondAttribute="trailing" constant="20" id="FeA-Hp-sbq"/>
+                            <constraint firstItem="bZX-iT-jr0" firstAttribute="centerX" secondItem="XO6-pE-NBC" secondAttribute="centerX" id="PWZ-ep-U3p"/>
+                            <constraint firstItem="bZX-iT-jr0" firstAttribute="centerY" secondItem="XO6-pE-NBC" secondAttribute="centerY" id="pGM-Km-aeS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="bZX-iT-jr0" id="Wca-v1-QEq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QVl-mp-9y6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="667" y="25"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
