@@ -7,25 +7,22 @@
 
 import UIKit
 
-
-typealias EntryPoint = UserViewProtocol & UIViewController
+typealias UsersListEntry = UserViewProtocol & UIViewController
 
 protocol UserRouterProtocol {
-    
-    var entry: EntryPoint? {get}
-    
+    var entry: UsersListEntry? {get}
     static func start() -> UserRouterProtocol
 }
 
 
 class UserRouter: UserRouterProtocol {
     
-    var entry: EntryPoint?
+    var entry: UsersListEntry?
     
     static func start() -> any UserRouterProtocol {
         
         let router = UserRouter()
-        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let sb = UIStoryboard(name: "UsersList", bundle: nil)
         let view = sb.instantiateViewController(withIdentifier: "UsersViewController") as? UsersViewController
        
         let presenter = UserPresenter()
@@ -41,6 +38,5 @@ class UserRouter: UserRouterProtocol {
         router.entry = view
         return router
     }
-    
     
 }

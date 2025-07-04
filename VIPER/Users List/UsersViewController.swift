@@ -10,7 +10,7 @@ import UIKit
 
 protocol UserViewProtocol {
     var presenter: UserPresenterProtocol? {get set}
-    func update<T: Decodable>(with data: [T])
+    func update(with data: [User])
     func update(with error: String)
 }
 
@@ -18,6 +18,8 @@ protocol UserViewProtocol {
 class UsersViewController: UIViewController, UserViewProtocol {
     
     @IBOutlet weak var usersTableView: UITableView!
+    
+    var presenter: UserPresenterProtocol?
     
     var users: [User] = []
     
@@ -33,15 +35,13 @@ class UsersViewController: UIViewController, UserViewProtocol {
         super.viewDidAppear(animated)
         
         presenter?.viewRequestedData()
+        self.tabBarItem = UITabBarItem(title: "users", image: UIImage(systemName: "person"), tag: 0)
     }
-    var presenter: UserPresenterProtocol?
     
-    func update<T>(with data: [T]) where T : Decodable {
+    func update(with data: [User]) {
         DispatchQueue.main.async { [weak self] in
-            if let users = data as? [User] {
-                self?.users = users
-                self?.usersTableView.reloadData()
-            }
+            self?.users = data
+            self?.usersTableView.reloadData()
         }
     }
     
